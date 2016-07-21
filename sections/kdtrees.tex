@@ -1,0 +1,85 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%             Background               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{\kd trees}
+  \framesubtitle{Introduction}
+
+  \begin{itemize}
+    \item A \kd tree is a data structure used for partitioning $k$-dimensional space
+    \item At each node, a cluster of points is partitioned by a hyperplane and the resulting
+      sets of points contained in the half-spaces are passed down to the child nodes
+    \item Most commonly, node hyperplanes are kept orthogonal to one coordinate axis of space
+    \item Binary search trees are the one-dimensional versions of \kd trees
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{\kd trees}
+  \framesubtitle{Binary search tree}
+  
+  Graphic of binary search tree here
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{\kd trees}
+  \framesubtitle{Two-dimensional \kd tree construction}
+  
+  Graphic of 2-d tree
+  Maybe show a sequence of tree construction 
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{\kd trees}
+  \framesubtitle{Three-dimensional \kd tree}
+  
+  Graphic of 3-d tree
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{\kd trees}
+  \framesubtitle{Nearest neighbor search}
+
+  \begin{enumerate}
+    \item Given a point, $p$, rescursively move down the tree by computing its orientation relative to the 
+      hyperplane $t$ by finding $p - \text{proj}_t(p)$
+    \item At each node, compare the distance of the query point to the node's splitting point with the distance
+      of the current nearest neighbor, if smaller, update nearest neighbor candidate
+    \item Upon completion of node's recursive call, determine if distance of query point to nearest neighbor 
+      candidate is larger than $\|p - \text{proj}_t(p)\|$; if it is, search the other child branch of node
+  \end{enumerate}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%             Limitations              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{\kd trees}
+  \framesubtitle{Height and its memory limitations}
+
+  \begin{itemize}
+    \item In the best case, when the tree is balanced, the height is $O(\log n)$
+    \item Each search query will require at least $O(\log n )$ pointer dereferences - very costly on graphics 
+      hardware
+    \item At each node we can only look ahead to one additional subspace of points
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\kd trees}
+  \framesubtitle{Height and its memory limitations}
+
+  \begin{itemize}
+    \item Costly edge cases lead to large variance in search dereferences and time
+  \end{itemize}
+
+  Insert image showing edge case when we would have to traverse both large sides of tree
+\end{frame}
