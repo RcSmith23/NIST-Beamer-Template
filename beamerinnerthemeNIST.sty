@@ -3,18 +3,17 @@
 \setbeamertemplate{background}{
   \begin{tikzpicture}
     \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-    \fill[color=slate-background] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+    \fill[color=seashell-bg] (0,0) rectangle (\the\paperwidth,\the\paperheight);
     \ifnum\c@framenumber=1
-      \fill[white,opacity=0.25] (0,0) rectangle(\the\paperwidth,5em);
+      \fill[white,opacity=0.1] (0,0) rectangle(\the\paperwidth,5em);
     \fi
   \end{tikzpicture}
 }
 
 % Title page
-\defbeamertemplate*{title page}{NIST}[1][]
-{ 
-  \vskip6cm%
-  \begin{beamercolorbox}[wd=12cm,leftskip=3cm,sep=8pt,#1]{title page header}
+\defbeamertemplate*{title page}{NIST}[1][]{ 
+  %\vskip2cm%
+  \begin{beamercolorbox}[center,sep=1.5cm]{title page header}
     \usebeamerfont{title}\inserttitle\par%
   \end{beamercolorbox}%
   \vskip0.75cm%

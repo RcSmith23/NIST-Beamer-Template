@@ -61,18 +61,29 @@
   \frametitle{\kd trees}
   \framesubtitle{Nanoflann}
 
-  \begin{enumerate}
+  \begin{itemize}
     \item Header only \kd tree implementation that supports k-nearest neighbor and radius search with 
       L1 or L2 metric
     \item Utilize curiously recurring template pattern and inlined functions for high performance
     \item Used for nearest neighbor search in our ZENO/Walk-on-Spheres implementation 
-  \end{enumerate}
+  \end{itemize}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %             Limitations              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{\kd trees}
+  \framesubtitle{Limitations of trees}
+
+  \begin{itemize}
+    \item Access pattern of memory when searching tree is unpredictable - difficult to prefetch memory
+    \item Spatially close points can end up far away in the tree (e.g., neighboring points divided by 
+      root's hyperplane)
+  \end{itemize}
+\end{frame}
 
 \begin{frame}
   \frametitle{\kd trees}
