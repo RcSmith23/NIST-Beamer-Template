@@ -3,17 +3,15 @@
 \setbeamertemplate{background}{
   \begin{tikzpicture}
     \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-    \fill[color=brown] (0,2) rectangle (\the\paperwidth,\the\paperheight);
-    \fill[color=orange] (0,0) rectangle(2.95,1.9);
-    \fill[color=blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.9);
-    \ifnum\thepage>1\relax%
-    \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    \fill[color=slate-background] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+    \ifnum\c@framenumber=1
+      \fill[white,opacity=0.25] (0,0) rectangle(\the\paperwidth,5em);
     \fi
   \end{tikzpicture}
 }
 
 % Title page
-\defbeamertemplate*{title page}{texsx}[1][]
+\defbeamertemplate*{title page}{NIST}[1][]
 { 
   \vskip6cm%
   \begin{beamercolorbox}[wd=12cm,leftskip=3cm,sep=8pt,#1]{title page header}

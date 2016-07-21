@@ -1,40 +1,41 @@
-\documentclass{beamer}
+\documentclass[lualatex,aspectratio=169]{beamer}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{xspace}
 
-\title{There Is No Largest Prime Number}
-\date[ISPN ’80]{27th International Symposium of Prime Numbers}
-\author[Euclid]{Euclid of Alexandria \texttt{euclid@alexandria.edu}}
+\title{Accelerating $k$-D Trees for Nearest Neighbor Search on Walk-on-Spheres}
+\date[\today]{\today}
+\author[Ryan Smith]{Ryan Smith}
+
+
+\newcommand{\kd}{$k$-D\xspace}
 
 \usetheme{NIST}
 
 \begin{document}
 
 \begin{frame}
-\titlepage
+  \titlepage
 \end{frame}
-
 
 \begin{frame} 
-\frametitle{There Is No Largest Prime Number} 
-\framesubtitle{The proof uses \textit{reductio ad absurdum}.} 
-\begin{theorem}
-There is no largest prime number. \end{theorem} 
-\begin{enumerate} 
-\item<1-| alert@1> Suppose $p$ were the largest prime number. 
-\item<2-> Let $q$ be the product of the first $p$ numbers. 
-\item<3-> Then $q+1$ is not divisible by any of them. 
-\item<1-> But $q + 1$ is greater than $1$, thus divisible by some prime
-number not in the first $p$ numbers.
-\end{enumerate}
+
+  \frametitle{Outline} 
+  %\framesubtitle{The proof uses \textit{reductio ad absurdum}.} 
+
+  \begin{itemize} 
+    \item Motivation and specification
+    \item Introduction to \kd trees
+    \item Limitations of \kd trees
+    \item Flattened \kd trees
+    \item Implementation details
+    \item Performance results
+    \item Areas for improvement
+  \end{itemize}
+
 \end{frame}
 
-\begin{frame}{A longer title}
-\begin{itemize}
-\item one
-\item two
-\end{itemize}
-\end{frame}
+\input{./sections/motiv_spec.tex}
 
 \end{document}
