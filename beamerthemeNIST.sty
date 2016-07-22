@@ -10,18 +10,41 @@
   Extension   = .ttf
 ]{DejaVuSans}
 
+\newfontfamily{\DejaVu}[
+  Path            = ./fonts/,
+  Extension       = .ttf,
+  BoldFont        = *-Bold,
+  ItalicFont      = *-Oblique,
+  BoldItalicFont  = *-BoldOblique
+]{DejaVuSans}
+
+\newfontfamily{\DejaVuC}[
+  Path        = ./fonts/,
+  Extension   = .ttf,
+  BoldFont    = *-Bold
+]{DejaVuSansCondensed}
+
+\newfontfamily{\DejaVuEL}[
+  Path        = ./fonts/,
+  Extension   = .ttf
+]{DejaVuSans-ExtraLight}
+
 % Settings
 \useinnertheme{NIST}
 \useoutertheme{NIST}
 \usecolortheme{NIST}
 
-%\setbeamerfont{title}
+\setbeamerfont{title}{family=\DejaVuEL}
+\setbeamerfont{author}{family=\DejaVuEL}
 
 \setbeamertemplate{itemize items}[circle]
 \setbeamertemplate{enumerate items}[circle]
 
+\setbeamertemplate{itemize/enumerate body begin}{\Large}
+\setbeamertemplate{itemize/enumerate subbody begin}{\large}
+
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{blocks}[rounded][shadow=true]
+%\setbeamertemplate{blocks}[rounded][shadow=true]
 
 \mdfdefinestyle{titlestyle}{linecolor=white,linewidth=1pt,backgroundcolor=seashell-bg}
 
