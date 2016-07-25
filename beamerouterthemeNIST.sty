@@ -4,15 +4,17 @@
 \defbeamertemplate*{frametitle}{NIST}[1][]
 {
   %\vskip1cm%
-  \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.8cm]{frametitle} 
     \begin{tikzpicture}
       \ifx\insertframesubtitle\@empty%
-      {\node[anchor=west, white,font=\large] at (3.2,0.81){\insertframetitle};}
+      {\hspace{0.5cm}\node[anchor=west, white,font=\Large] at (0,1.5){\insertframetitle};}
       \else%
-      {\node[anchor= west, white,font=\large] at (2.5,.4){\insertframetitle};%
-      \node[anchor= west, white,font=\small] at (2.5,0){\insertframesubtitle};}%
+      {\hspace{0.5cm}\node[anchor= west, white,font=\Large] at (0,.6){\insertframetitle};%
+      \node[anchor= west, white,font=\small] at (0,0){\insertframesubtitle};}%
       \fi
-    \end{tikzpicture}
+    \end{tikzpicture}\hfill\break%
+    \textcolor{white}{\hdashrule[5mm]{\paperwidth}{0.5pt}{1mm}}%
+    \vspace{-0.5cm}
   \end{beamercolorbox}
 }
 

@@ -1,9 +1,9 @@
 \mode<presentation>
 
-% Requirements
+% Requirementsjk
 \RequirePackage{tikz}
 \RequirePackage{fontspec}
-\RequirePackage{mdframed}
+\RequirePackage{dashrule}
 
 \setmainfont[
   Path        = ./fonts/,
@@ -34,18 +34,32 @@
 \useoutertheme{NIST}
 \usecolortheme{NIST}
 
+% Set font options for primary types
 \setbeamerfont{title}{family=\DejaVuEL}
 \setbeamerfont{author}{family=\DejaVuEL}
+\setbeamerfont{footline}{size=\scriptsize}
 
+% Set bullet styling for lists and enumerations
+% \setbeamertemplate{itemize items}[circle]
+% \setbeamertemplate{enumerate items}[circle]
+% Custom stylings
 \setbeamertemplate{itemize items}[circle]
 \setbeamertemplate{enumerate items}[circle]
 
 \setbeamertemplate{itemize/enumerate body begin}{\Large}
 \setbeamertemplate{itemize/enumerate subbody begin}{\large}
 
+% Remove the navigation symbols
 \setbeamertemplate{navigation symbols}{}
-%\setbeamertemplate{blocks}[rounded][shadow=true]
 
-\mdfdefinestyle{titlestyle}{linecolor=white,linewidth=1pt,backgroundcolor=seashell-bg}
-
+% Place in the footer 
+\setbeamertemplate{footline}{%
+  \ifnum\c@framenumber=1
+  \else
+    \hfill\usebeamerfont{footline}\insertframenumber%
+    \hspace{1mm}|\hspace{1mm}%
+    \inserttotalframenumber\hspace{2mm}%
+    \vspace{2mm}
+  \fi
+}
 \mode<all>
