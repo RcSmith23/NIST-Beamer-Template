@@ -5,6 +5,15 @@
 \RequirePackage{fontspec}
 \RequirePackage{dashrule}
 
+% Packages needed for using svg package
+\RequirePackage{pdftexcmds}
+\makeatletter
+\let\pdfstrcmp\pdf@strcmp
+\let\pdffilemoddate\pdf@filemoddate
+\makeatother
+
+\RequirePackage{svg}
+
 \setmainfont[
   Path        = ./fonts/,
   Extension   = .ttf

@@ -1,5 +1,5 @@
 BUILD := build
-TEX := lualatex --output-directory $(BUILD)
+TEX := lualatex --shell-escape --output-directory $(BUILD)
 
 SLIDES := NIST-example
 
