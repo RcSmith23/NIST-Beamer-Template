@@ -3,6 +3,25 @@
   \frametitle{Motivation}
   \framesubtitle{ZENO/Walk-on-Spheres}
 
+  \begin{itemize}
+    \item ZENO/Walk-on-Spheres is an accelerated implementation of the ZENO computation which is a Monte Carlo
+      numerical path integration that yields material properties such as:
+    \begin{itemize}
+      \item electrostatic capacity
+      \item polarizability tensor
+      \item intrinsic conductivity 
+      \item hydrodynamic radius
+      \item translational diffusion constant
+      \item and more
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Motivation}
+  \framesubtitle{ZENO/Walk-on-Spheres}
+
   \begin{figure}
     \centering
     \includegraphics[width=0.7\textwidth]{80000_NOBGCROP.png}
@@ -16,17 +35,19 @@
   \frametitle{Motivation}
   \framesubtitle{ZENO/Walk-on-Spheres}
 
-  \begin{itemize}
-    \item Walk-on-Spheres accelerates Brownian Motion by jumping to a uniformly distributed point on the surface
-      of a surrounding sphere
-      \begin{itemize}
-        \item The radius of the surrounding sphere is the distance of the random walker to the molecule
-        \item Our implementation uses \kd trees to quickly find the nearest neighbor
-      \end{itemize}
-    \item The random access pattern of a \kd tree limits its potential for use on GPUs where memory operations
-      are highly costly
-  \end{itemize}
-
+  \begin{columns}[T]
+    \begin{column}{.5\textwidth}
+      \begin{block}{}%
+        {\color{white} Walk-on-Spheres accelerates Brownian Motion by jumping%
+          to a uniformly distributed point on the surface of a surrounding sphere}
+      \end{block}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{block}{}
+        \includegraphics[width=\textwidth]{wos2.png}
+      \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}

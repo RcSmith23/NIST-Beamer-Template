@@ -14,7 +14,6 @@
     \item Often, hyperplanes are kept orthogonal to one coordinate axis of the space
     \item Binary search trees are the one-dimensional versions of \kd trees
   \end{itemize}
-
 \end{frame}
 
 \begin{frame}
@@ -31,16 +30,11 @@
   \frametitle{\kd trees}
   \framesubtitle{Example: $k=2$}
   
-  Graphic of 2-d tree
-  Maybe show a sequence of tree construction 
-  
 \end{frame}
 
 \begin{frame}
   \frametitle{\kd trees}
   \framesubtitle{Example: $k=3$}
-  
-  Graphic of 3-d tree
   
 \end{frame}
 
@@ -82,7 +76,11 @@
   \framesubtitle{Limitations of trees}
 
   \begin{itemize}
-    \item Access pattern of memory when searching tree is unpredictable - difficult to prefetch memory
+    \item Memory access pattern when searching tree is unpredictable
+      \begin{itemize}
+        \item Impossible to align contiguous blocks that have temporal locality
+        \item Difficult to prefetch memory
+      \end{itemize}
     \item Spatially close points can end up far away in the tree (e.g., neighboring points divided by 
       root's hyperplane)
   \end{itemize}
@@ -90,12 +88,14 @@
 
 \begin{frame}
   \frametitle{\kd trees}
-  \framesubtitle{Height and its memory limitations}
+  \framesubtitle{GPU restrictions}
 
   \begin{itemize}
     \item In the best case, when the tree is balanced, the height is $O(\log n)$
-    \item Each search query will require at least $O(\log n )$ pointer dereferences - very costly on graphics 
-      hardware
+      \begin{itemize}
+        \item Each search query will require at least $O(\log n )$ pointer dereferences - very costly on graphics 
+          hardware
+      \end{itemize}
     \item At each node we can only look ahead to one additional subspace of points
   \end{itemize}
 \end{frame}
@@ -104,9 +104,18 @@
   \frametitle{\kd trees}
   \framesubtitle{Height and its memory limitations}
 
-  \begin{itemize}
-    \item Costly edge cases lead to large variance in search dereferences and time
-  \end{itemize}
-
-  Insert image showing edge case when we would have to traverse both large sides of tree
+  \begin{columns}[T]
+    \begin{column}{.5\textwidth}
+      \begin{block}{}%
+        {\color{white} Costly edge cases lead to large variance in search dereferences 
+          and time}
+      \end{block}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{block}{}
+        Show edge case here
+        %\includegraphics[width=\textwidth]{}
+      \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}

@@ -27,9 +27,9 @@
   \framesubtitle{Advantages}
 
   \begin{itemize}
-    \item Increased dimensionality of nodes significantly reduces height of tree
-    \item Closely associated hyperplanes allow for more powerful look ahead to adjacent
-      spaces during nearest neighbor search
+    \item Increased dimensionality reduces height of tree
+    \item Packed hyperplanes allow for more powerful look ahead to adjacent
+      spaces during search
   \end{itemize}
 
 \end{frame}
@@ -40,9 +40,8 @@
 
   \begin{itemize}
     \item Additional computation required at each node during search
-    \item Grouped hyperplanes increase memory footprint of nodes 
     \item More complex conditions during nearest neighbor adjacent subspace
-      checks
+      checks require additional information to be saved per node
   \end{itemize}
 
 \end{frame}
@@ -59,7 +58,10 @@
   \frametitle{Flattened \kd trees}
   \framesubtitle{Initial results}
 
-  show run performance results (time, dereferences, total nodes)
+  \color{white}
+  (On test of 1000 searches)
+  Graph showing run time of different branch factors
+  Graph showing number of pointer dereferences
 
 \end{frame}
 
@@ -67,37 +69,15 @@
   \frametitle{Flattened \kd trees}
   \framesubtitle{Initial results}
 
-  show performance results for cache usage (instruction count, cache misses)
+  \color{white}
+  (On test of 1000 searches)
+  Graph showing L1 Data Cache misses
 
 \end{frame}
 
 \begin{frame}
   \frametitle{Flattened \kd trees}
   \framesubtitle{Shortcomings}
-
-  \begin{itemize}
-    \item Despite reduced pointer dereferences, still visiting significant amount of nodes
-    \item Naive implementation incurs significant computational costs 
-       Maybe add in list of thinkgs that were contributing to this
-  \end{itemize}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Flattened \kd trees}
-  \framesubtitle{Improving path selection}
-
-  \begin{itemize}
-    \item Despite reduced pointer dereferences, still visiting significant amount of nodes
-    \item Naive implementation incurs significant computational costs 
-       Maybe add in list of thinkgs that were contributing to this
-  \end{itemize}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Flattened \kd trees}
-  \framesubtitle{Improving memory management}
 
   \begin{itemize}
     \item Despite reduced pointer dereferences, still visiting significant amount of nodes
