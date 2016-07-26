@@ -16,15 +16,19 @@
   \begin{beamercolorbox}[center,sep=1.5cm]{title page header}
     \usebeamerfont{title}\inserttitle\par%
   \end{beamercolorbox}%
-  \vskip2.1cm%
-  \begin{beamercolorbox}[wd=\the\paperwidth,leftskip=0.2cm,#1]{author}
-    \usebeamerfont{author}\insertauthor%
-  \end{beamercolorbox}
-  \vskip0.1cm%
-  \begin{beamercolorbox}[wd=\the\paperwidth,leftskip=0.2cm,#1]{date}
-    \usebeamerfont{author}\insertdate%
-  \end{beamercolorbox}
-  \vfill
+
+  \vskip1.4cm%
+  \begin{tikzpicture}
+    \useasboundingbox (0,0) rectangle(0.8\paperwidth,3cm);
+    % Place NIST logo on left hand side
+    {\node[anchor=west,white](P) at (current bounding box.west) {%
+      \hspace{-1cm}\includegraphics[width=3.5cm]{NISTLogoWhite.png}
+    };}
+    % Attach name and date to NIST logo then shift right
+    {\node[anchor=west,white,align=right] at (P.east) 
+      {\hspace{9.5cm}\usebeamerfont{author}\insertauthor\\%
+      \usebeamerfont{author}\insertdate};}
+  \end{tikzpicture}
 }
 
 \mode<all>

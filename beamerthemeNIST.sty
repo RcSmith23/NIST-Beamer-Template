@@ -5,15 +5,6 @@
 \RequirePackage{fontspec}
 \RequirePackage{dashrule}
 
-% Packages needed for using svg package
-\RequirePackage{pdftexcmds}
-\makeatletter
-\let\pdfstrcmp\pdf@strcmp
-\let\pdffilemoddate\pdf@filemoddate
-\makeatother
-
-\RequirePackage{svg}
-
 \setmainfont[
   Path        = ./fonts/,
   Extension   = .ttf
@@ -38,25 +29,31 @@
   Extension   = .ttf
 ]{DejaVuSans-ExtraLight}
 
+\RequirePackage[font={color=white,scriptsize},labelfont={color=white}]{caption}
+%\captionsetup{labelfont=scriptsize}
+
 % Settings
 \useinnertheme{NIST}
 \useoutertheme{NIST}
 \usecolortheme{NIST}
 
 % Set font options for primary types
-\setbeamerfont{title}{family=\DejaVuEL}
-\setbeamerfont{author}{family=\DejaVuEL}
+\setbeamerfont{title}{family=\DejaVuEL,size=\Large}
+\setbeamerfont{author}{family=\DejaVu}
 \setbeamerfont{footline}{size=\scriptsize}
 
-% Set bullet styling for lists and enumerations
-% \setbeamertemplate{itemize items}[circle]
-% \setbeamertemplate{enumerate items}[circle]
-% Custom stylings
-\setbeamertemplate{itemize items}[circle]
-\setbeamertemplate{enumerate items}[circle]
+% Slide title and subtitle font settings
+\setbeamerfont{frametitle}{family=\DejaVu}
+\setbeamerfont{framesubtitle}{family=\DejaVu,size=\large}
 
+% Custom stylings
 \setbeamertemplate{itemize/enumerate body begin}{\Large}
 \setbeamertemplate{itemize/enumerate subbody begin}{\large}
+
+% Set bullet styling for lists and enumerations
+\setbeamertemplate{itemize item}{\bullet}
+\setbeamertemplate{itemize subitem}{\circ}
+\setbeamertemplate{enumerate items}[default]
 
 % Remove the navigation symbols
 \setbeamertemplate{navigation symbols}{}
