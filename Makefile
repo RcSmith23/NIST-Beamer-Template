@@ -8,7 +8,7 @@ TARGET := $(SLIDES).pdf
 all: $(TARGET)
 
 read::
-	evince $(BUILD)/$(TARGET) &
+	evince $(BUILD)/$(TARGET) 2> /dev/null > /dev/null &
 
 spell::
 	find . -name '*.tex' -o -name '*.sty' -exec aspell --lang=en --mode=tex check "{}" \;

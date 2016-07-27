@@ -8,10 +8,11 @@
   \framesubtitle{Introduction}
 
   \begin{itemize}
-    \item A \kd tree is a data structure used for partitioning $k$-dimensional space
-    \item At each node, a cluster of points is partitioned by a hyperplane and the resulting
-      sets of points contained in the half-spaces are passed down to the child nodes
-    \item Often, hyperplanes are kept orthogonal to one coordinate axis of the space
+    \item Partition $k$-dimensional space
+    \item Recursively splits point clouds with hyperplanes at each node
+      \begin{itemize}
+        \item Hyperplanes usually orthogonal to coordinate axis
+      \end{itemize}
     \item Binary search trees are the one-dimensional versions of \kd trees
   \end{itemize}
 \end{frame}
@@ -89,37 +90,26 @@
   \begin{itemize}
     \item Memory access pattern when searching tree is unpredictable
       \begin{itemize}
-        \item Impossible to align contiguous blocks that have temporal locality
+        \item Can't align contiguous blocks with temporal locality
         \item Difficult to prefetch memory
       \end{itemize}
-    \item Spatially close points can end up far away in the tree (e.g., neighboring points divided by 
-      root's hyperplane)
+    \item Does not maintain spatially locallity within memory
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{\kd trees}
-  \framesubtitle{GPU restrictions}
-
-  \begin{itemize}
-    \item In the best case, when the tree is balanced, the height is $O(\log n)$
-      \begin{itemize}
-        \item Each search query will require at least $O(\log n )$ pointer dereferences - very costly on graphics 
-          hardware
-      \end{itemize}
-    \item At each node we can only look ahead to one additional subspace of points
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{\kd trees}
-  \framesubtitle{Height and its memory limitations}
+  \framesubtitle{Height and its GPU limitations}
 
   \begin{columns}[T]
     \begin{column}{.5\textwidth}
       \begin{block}{}%
-        {\color{white} Costly edge cases lead to large variance in search dereferences 
-          and time}
+        {\color{white} \bullet\hspace{1mm} Costly edge cases lead to large variance in search dereferences 
+          and time\\\vspace{0.5cm}
+        
+        \bullet\hspace{1mm} Queries require at least $O(\lg n)$ pointer dereferences\\\vspace{0.5cm}
+
+      \bullet\hspace{1mm} Only single subpsace look ahead during search}
       \end{block}
     \end{column}
     \begin{column}{.5\textwidth}

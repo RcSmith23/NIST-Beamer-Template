@@ -1,8 +1,42 @@
+\begin{frame}
+  \frametitle{Final results}
+  \framesubtitle{Run performance}
+
+  \color{white}
+  {\renewcommand{\arraystretch}{1.5}
+  \begin{table}
+    \begin{tabular}{l r r}
+      Tree & Search Time (ns) & Dereferences \\
+      \hline \hline
+      Flat \kd tree       & 3600  & 17\\
+      Flat \kd tree (init)& 18000 & 26\\
+      Nanoflann           & 5400  & 145\\
+      \hline
+    \end{tabular}
+    \caption{NN search performance comparison.}
+  \end{table}%
+  }
+
+\end{frame}
 
 \begin{frame}
   \frametitle{Final results}
+  \framesubtitle{Cache usage}
 
-  \color{white} Talk about final performance
+  \color{white}
+  {\renewcommand{\arraystretch}{1.5}
+  \begin{table}
+    \begin{tabular}{l r r r}
+      Tree & Instr. Cache Reads & Data Cache Reads & L1 Data Misses\\
+      \hline \hline
+      Flat \kd tree       & 12,775,464  & 2,804,068   & 180,288\\
+      Flat \kd tree (init)& 21,894,724  & 5,418,211   & 343,252\\
+      Nanoflann           & 53,458,672  & 23,534,300  & 284,127\\
+      \hline
+    \end{tabular}
+    \caption{NN search cache usage comparison on 1000 searches.}
+  \end{table}%
+  }
 
 \end{frame}
 

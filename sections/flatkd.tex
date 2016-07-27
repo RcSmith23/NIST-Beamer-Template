@@ -4,12 +4,12 @@
   \framesubtitle{Introduction}
 
   \begin{itemize}
-    \item Similar to traditional \kd trees, partition space using hyperplanes that are 
-      fixed w.r.t. one dimension of the original space
-    \item Take a parameter $b$, the branching factor which must be a power of two, and
-      organize $b-1$ hyperplanes into a single node in a BST
-    \item Each node has up to $b$ children, each of which accounts for a disjoint subspace 
-      of the parent's space
+    \item Additional parameter $b$ specifies branching factor (i.e., number of children)
+      \begin{itemize}
+        \item $b$ must be a power of two
+        \item Node maintains up to $b-1$ hyperplanes 
+      \end{itemize}
+    \item Each child accounts for a disjoint subspace of the parent's
   \end{itemize}
 
 \end{frame}
@@ -30,11 +30,10 @@
   \framesubtitle{Advantages}
 
   \begin{itemize}
-    \item Increased dimensionality reduces height of tree
-    \item Packed hyperplanes allow for more powerful look ahead to adjacent
-      spaces during search
+    \item Significantly reduced tree height
+    \item More powerful look ahead to adjacent spaces when searching
+    \item Greater spatial locality of tree components in memory
   \end{itemize}
-
 \end{frame}
 
 \begin{frame}
@@ -42,11 +41,12 @@
   \framesubtitle{Disadvantages}
 
   \begin{itemize}
-    \item Additional computation required at each node during search
-    \item More complex conditions during nearest neighbor adjacent subspace
-      checks require additional information to be saved per node
+    \item Additional computation per node 
+      \begin{itemize}
+        \item More complex path selection conditions
+      \end{itemize}
+    \item Greater memory footprint to fetch per node
   \end{itemize}
-
 \end{frame}
 
 \begin{frame}
@@ -65,10 +65,74 @@
   \framesubtitle{Initial results}
 
   \color{white}
-  (On test of 1000 searches)
-  Graph showing run time of different branch factors
-  Graph showing number of pointer dereferences
-
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \vspace{-0.65cm}%
+      \begin{center}
+        \begin{tikzpicture}
+          \centering
+          \begin{axis}[
+              every axis plot post/.style={/pgf/number format/fixed},
+              ytick = \empty,
+              ybar=5pt,
+              bar width=16pt,
+              axis on top,
+              %xtick={2,8,16,32,64,128},
+              xtick=data,
+              height = 6.5cm,
+              enlarge x limits=0.2,
+              symbolic x coords ={2, 8, 16, 32, 64, 128},
+              visualization depends on=rawy\as\rawy, % Save the unclipped values
+              nodes near coords={%
+                \pgfmathprintnumber{\rawy}% Print unclipped values
+              },
+              every node near coord/.append style={family=\DejaVu},
+              y axis line style = {opacity=0},
+              axis lines*=left, 
+              clip=false,
+              title = Pointer Dereferences,
+              xlabel = Branch Factor
+            ]
+            %\addplot[graph-red,fill=graph-red] coordinates{(2,145)};
+            \addplot[graph-blue,fill=graph-blue] coordinates {(2,145) (8, 53)
+            (16, 48) (32, 56) (64, 38) (128, 33)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{center}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \vspace{-0.72cm}%
+      \begin{center}
+        \begin{tikzpicture}
+          \centering
+          \begin{axis}[
+              every axis plot post/.style={/pgf/number format/fixed},
+              ytick = \empty,
+              ybar=5pt,
+              bar width=16pt,
+              axis on top,
+              xtick=data,
+              height = 6.5cm,
+              enlarge x limits=0.2,
+              symbolic x coords ={2, 8, 16, 32, 64, 128},
+              visualization depends on=rawy\as\rawy, % Save the unclipped values
+              nodes near coords={%
+                \pgfmathprintnumber{\rawy}% Print unclipped values
+              },
+              every node near coord/.append style={family=\DejaVu},
+              y axis line style = {opacity=0},
+              axis lines*=left, 
+              clip=false,
+              title = Search Time ($\mu$s),
+              xlabel = Branch Factor
+            ]
+            \addplot[graph-blue,fill=graph-blue] coordinates {(2,18) (8, 36)
+            (16, 42) (32, 61) (64, 66) (128, 98)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{center}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -76,19 +140,17 @@
   \framesubtitle{Initial results}
 
   \color{white}
-  (On test of 1000 searches)
-  Graph showing L1 Data Cache misses
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Flattened \kd trees}
-  \framesubtitle{Shortcomings}
-
-  \begin{itemize}
-    \item Despite reduced pointer dereferences, still visiting significant amount of nodes
-    \item Naive implementation incurs significant computational costs 
-       Maybe add in list of thinkgs that were contributing to this
-  \end{itemize}
-
+  {\renewcommand{\arraystretch}{1.5}
+  \begin{table}
+    \begin{tabular}{l r r r}
+      Tree & Instr. Cache Reads & Data Cache Reads & \cellcolor{graph-red}L1 Data Misses \\
+      \hline \hline
+      Flat \kd tree       & 77,268,111  & 31,373,726  & 314,770 \\
+      Flat \kd tree (-O2) & 21,894,724  & 5,418,211   & 343,252 \\
+      Nanoflann           & 53,458,672  & 23,534,300  & 284,127 \\
+      \hline
+    \end{tabular}
+    \caption{Cache usage comparison between initial flat \kd tree and nanoflann.}
+  \end{table}%
+  }
 \end{frame}
