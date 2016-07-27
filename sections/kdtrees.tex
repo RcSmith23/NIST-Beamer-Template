@@ -55,7 +55,7 @@
   \framesubtitle{Nearest neighbor search}
 
   \begin{enumerate}
-    \item Given a point, $p$, rescursively move down the tree by computing the points orientation relative to the 
+    \item Given a point, $p$, recursively move down the tree by computing the points orientation relative to the 
       hyperplane $t$ given by $p - \text{proj}_t(p)$
     \item At each node, compare the distance of the query point to the node's splitting point with the distance
       of the current nearest neighbor, if smaller, update nearest neighbor candidate
@@ -93,7 +93,7 @@
         \item Can't align contiguous blocks with temporal locality
         \item Difficult to prefetch memory
       \end{itemize}
-    \item Does not maintain spatially locallity within memory
+    \item Does not maintain spatially locality within memory
   \end{itemize}
 \end{frame}
 
@@ -109,7 +109,7 @@
         
         \bullet\hspace{1mm} Queries require at least $O(\lg n)$ pointer dereferences\\\vspace{0.5cm}
 
-      \bullet\hspace{1mm} Only single subpsace look ahead during search}
+      \bullet\hspace{1mm} Only single subspace look ahead during search}
       \end{block}
     \end{column}
     \begin{column}{.5\textwidth}
