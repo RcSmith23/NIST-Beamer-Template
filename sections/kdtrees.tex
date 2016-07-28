@@ -53,18 +53,44 @@
 \begin{frame}
   \frametitle{\kd trees}
   \framesubtitle{Nearest neighbor search}
+  \begin{columns}[T]
+    \begin{column}{.5\textwidth}
+      \begin{block}{}%
+        {\color{white} 1.\hspace{1mm} Compute orientation of point relative to hyperplane
+          \\\vspace{0.4cm}
+        
+        2.\hspace{1mm} Recursively move down tree until leaf node\\\vspace{0.4cm}
 
-  \begin{enumerate}
-    \item Given a point, $p$, recursively move down the tree by computing the points orientation relative to the 
-      hyperplane $t$ given by $p - \text{proj}_t(p)$
-    \item At each node, compare the distance of the query point to the node's splitting point with the distance
-      of the current nearest neighbor, if smaller, update nearest neighbor candidate
-    \item Upon completion of recursive call, compare the distance of current nearest neighbor 
-      candidate to the point with the distance to the hyperplane $\|p - \text{proj}_t(p)\|$; 
-      if it is larger, search the other child branch of the node
-  \end{enumerate}
-
+        3.\hspace{1mm} Compare query point to all in leaf node, record smallest\\\vspace{0.4cm}
+    
+        4.\hspace{1mm} Upon return, if distance of point to hyperplane less than distance to current
+          NN candidate, traverse other subtree}
+      \end{block}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{block}{}
+        \includegraphics[width=0.85\textwidth]{nn_adjaceny_simple.pdf}
+      \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}
+
+
+%\begin{frame}
+%  \frametitle{\kd trees}
+%  \framesubtitle{Nearest neighbor search}
+%
+%  \begin{enumerate}
+%    \item Given a point, $p$, recursively move down the tree by computing the points orientation relative to the 
+%      hyperplane $t$ given by $p - \text{proj}_t(p)$
+%    \item At each node, compare the distance of the query point to the node's splitting point with the distance
+%      of the current nearest neighbor, if smaller, update nearest neighbor candidate
+%    \item Upon completion of recursive call, compare the distance of current nearest neighbor 
+%      candidate to the point with the distance to the hyperplane $\|p - \text{proj}_t(p)\|$; 
+%      if it is larger, search the other child branch of the node
+%  \end{enumerate}
+%
+%\end{frame}
 
 \begin{frame}
   \frametitle{\kd trees}
@@ -99,7 +125,7 @@
 
 \begin{frame}
   \frametitle{\kd trees}
-  \framesubtitle{Height and its GPU limitations}
+  \framesubtitle{Limitations of height for GPUs}
 
   \begin{columns}[T]
     \begin{column}{.5\textwidth}

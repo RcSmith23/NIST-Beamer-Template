@@ -1,5 +1,4 @@
 
-
 \begin{frame}
   \frametitle{Flattened \kd trees}
   \framesubtitle{Introduction}
@@ -12,7 +11,6 @@
       \end{itemize}
     \item Each child accounts for a disjoint subspace of the parent's
   \end{itemize}
-
 \end{frame}
 
 \begin{frame}
@@ -23,7 +21,6 @@
     \centering
     \includegraphics[width=\textwidth]{flatkdtree.pdf}
   \end{figure}
-
 \end{frame}
 
 \begin{frame}
@@ -87,7 +84,7 @@
               nodes near coords={%
                 \pgfmathprintnumber{\rawy}% Print unclipped values
               },
-              every node near coord/.append style={family=\DejaVu},
+              every node near coord/.append style={font=\DejaVu},
               y axis line style = {opacity=0},
               axis lines*=left, 
               clip=false,
@@ -96,7 +93,7 @@
             ]
             %\addplot[graph-red,fill=graph-red] coordinates{(2,145)};
             \addplot[graph-blue,fill=graph-blue] coordinates {(2,145) (8, 53)
-            (16, 48) (32, 56) (64, 38) (128, 33)};
+              (16, 48) (32, 56) (64, 38) (128, 33)};
           \end{axis}
         \end{tikzpicture}
       \end{center}
@@ -146,9 +143,9 @@
     \begin{tabular}{l r r r}
       Tree & Instr. Cache Reads & Data Cache Reads & \cellcolor{graph-red}L1 Data Misses \\
       \hline \hline
-      Flat \kd tree       & 77,268,111  & 31,373,726  & 314,770 \\
-      Flat \kd tree (-O2) & 21,894,724  & 5,418,211   & 343,252 \\
-      Nanoflann           & 53,458,672  & 23,534,300  & 284,127 \\
+      Flat \kd tree       & 77 268 111  & 31 373 726  & 314 770 \\
+      Flat \kd tree (-O2) & 21 894 724  & 5 418 211   & 343 252 \\
+      Nanoflann           & 53 458 672  & 23 534 300  & 284 127 \\
       \hline
     \end{tabular}
     \caption{Cache usage comparison between initial flat \kd tree and nanoflann.}
