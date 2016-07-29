@@ -19,7 +19,7 @@
   
   \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{flatkdtree.pdf}
+    \includegraphics[width=\textwidth]{flatkdtreeExtra.pdf}
   \end{figure}
 \end{frame}
 
@@ -72,14 +72,13 @@
           \begin{axis}[
               every axis plot post/.style={/pgf/number format/fixed},
               ytick = \empty,
-              ybar=5pt,
+              ybar=-16pt,
               bar width=16pt,
               axis on top,
-              %xtick={2,8,16,32,64,128},
-              xtick=data,
               height = 6.5cm,
               enlarge x limits=0.2,
               symbolic x coords ={2, 8, 16, 32, 64, 128},
+              xtick={2,8,16,32,64,128},
               visualization depends on=rawy\as\rawy, % Save the unclipped values
               nodes near coords={%
                 \pgfmathprintnumber{\rawy}% Print unclipped values
@@ -91,8 +90,8 @@
               title = Pointer Dereferences,
               xlabel = Branch Factor
             ]
-            %\addplot[graph-red,fill=graph-red] coordinates{(2,145)};
-            \addplot[graph-blue,fill=graph-blue] coordinates {(2,145) (8, 53)
+            \addplot[graph-red,fill=graph-red] coordinates{ (2,145) };
+            \addplot[graph-blue,fill=graph-blue] coordinates {(8, 53)
               (16, 48) (32, 56) (64, 38) (128, 33)};
           \end{axis}
         \end{tikzpicture}
@@ -106,13 +105,13 @@
           \begin{axis}[
               every axis plot post/.style={/pgf/number format/fixed},
               ytick = \empty,
-              ybar=5pt,
+              ybar=-16pt,
               bar width=16pt,
               axis on top,
-              xtick=data,
               height = 6.5cm,
               enlarge x limits=0.2,
               symbolic x coords ={2, 8, 16, 32, 64, 128},
+              xtick={2, 8, 16, 32, 64, 128},
               visualization depends on=rawy\as\rawy, % Save the unclipped values
               nodes near coords={%
                 \pgfmathprintnumber{\rawy}% Print unclipped values
@@ -124,7 +123,8 @@
               title = Search Time ($\mu$s),
               xlabel = Branch Factor
             ]
-            \addplot[graph-blue,fill=graph-blue] coordinates {(2,18) (8, 36)
+            \addplot[graph-red,fill=graph-red] coordinates { (2,18) };
+            \addplot[graph-blue,fill=graph-blue] coordinates {(8, 36)
             (16, 42) (32, 61) (64, 66) (128, 98)};
           \end{axis}
         \end{tikzpicture}
@@ -140,12 +140,12 @@
   \color{white}
   {\renewcommand{\arraystretch}{1.5}
   \begin{table}
-    \begin{tabular}{l r r r}
-      Tree & Instr. Cache Reads & Data Cache Reads & \cellcolor{graph-red}L1 Data Misses \\
+    \begin{tabular}{l r r>{\columncolor{graph-blue}} r}
+      Tree & Instr. Cache Reads & Data Cache Reads & L1 Data Misses \\
       \hline \hline
       Flat \kd tree       & 77 268 111  & 31 373 726  & 314 770 \\
-      Flat \kd tree (-O2) & 21 894 724  & 5 418 211   & 343 252 \\
-      Nanoflann           & 53 458 672  & 23 534 300  & 284 127 \\
+      %Flat \kd tree (-O2) & 21 894 724  & 5 418 211   & 343 252 \\
+      Normal \kd tree     & 53 458 672  & 23 534 300  & 284 127 \\
       \hline
     \end{tabular}
     \caption{Cache usage comparison between initial flat \kd tree and nanoflann.}

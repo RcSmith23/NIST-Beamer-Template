@@ -9,8 +9,8 @@
       Tree & Search Time (ns) & Dereferences \\
       \hline \hline
       Flat \kd tree       & 3600  & 17\\
-      Flat \kd tree (init)& 18 000 & 26\\
-      Nanoflann           & 5400  & 145\\
+      %Flat \kd tree (init)& 18 000 & 26\\
+      Normal \kd tree     & 5400  & 145\\
       \hline
     \end{tabular}
     \caption{NN search performance comparison.}
@@ -26,12 +26,12 @@
   \color{white}
   {\renewcommand{\arraystretch}{1.5}
   \begin{table}
-    \begin{tabular}{l r r r}
+    \begin{tabular}{l r r>{\columncolor{graph-blue}} r}
       Tree & Instr. Cache Reads & Data Cache Reads & L1 Data Misses\\
       \hline \hline
       Flat \kd tree       & 12 775 464  & 2 804 068   & 180 288\\
-      Flat \kd tree (init)& 21 894 724  & 5 418 211   & 343 252\\
-      Nanoflann           & 10 328 114  & 2 506 374   & 284 127\\
+      %Flat \kd tree (init)& 21 894 724  & 5 418 211   & 343 252\\
+      Normal \kd tree     & 10 328 114  & 2 506 374   & 284 127\\
       \hline
     \end{tabular}
     \caption{NN search cache usage comparison on 1000 searches.}
